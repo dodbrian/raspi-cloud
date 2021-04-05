@@ -1,0 +1,11 @@
+sudo virt-install -n ubuntu-vm \
+    --connect qemu:///system \
+    --description "Ubuntu 20.04 VM" \
+    --os-type=Linux \
+    --ram=1024 \
+    --vcpus=2 \
+    --disk path=/var/lib/libvirt/images/ubuntu-vm.img,bus=virtio,size=4 \
+    --graphics=none \
+    --location /home/ubuntu/images/ubuntu-20.04.1-live-server-arm64.iso \
+    --extra-args='console=tty0 console=ttyS0,115200n8 serial' \
+    --network bridge:virbr0
